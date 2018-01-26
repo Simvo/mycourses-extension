@@ -1,24 +1,10 @@
 
 console.log("Executing addToCalendar.js");
 
-
-
-// function injectScript(scriptSrc) {
-// 	var head = document.getElementsByTagName('head')[0];
-
-// 	var script = document.createElement('script');
-
-// 	script.type = 'text/javascript';
-// 	script.src = scriptSrc;
-// 	head.appendChild(script);
-// }
-
-// injectScript('https://addevent.com/libs/atc/1.6.1/atc.min.js');
-
 //Gets each row
 var rows = document.querySelectorAll("#z_b > tbody > tr > th.d_ich");
 var titles = document.querySelectorAll('#z_b > tbody > tr:nth-child(n) > th > div.dco.d2l-foldername > div');
-var dates = document.querySelectorAll('.d_gt:last-child label');
+var dates = document.querySelectorAll('.d_gt:last-child');
 
 var topRow = document.querySelector('#z_b > tbody > tr.d_ggl2.d_dbold > td');
 var header = document.querySelector('#z_b > tbody > tr.d_gh');
@@ -64,7 +50,14 @@ function createButton(i){
 	dropdownContent.className = 'dropdown-content';
 	dropdownContent.setAttribute('id', 'calendarDropdown-' + i);
 
-	let startDate = new Date(dates[i].innerHTML);
+	let startDate = new Date();
+	let endDate = new Date();
+
+	if(dates[i].lastChild.length != 1){
+		startDate = new Date(dates[i].lastChild.innerHTML);
+		endDate = new Date(dates[i].lastChild.innerHTML);
+	}
+
 	startDate.setHours(startDate.getHours() - 1);
 
 	let calendarValues = createCalendar({
@@ -76,7 +69,7 @@ function createButton(i){
 
 			start: startDate,
 
-			end: new Date(dates[i].innerHTML)
+			end: endDate
 
 		}
 	});
@@ -99,42 +92,15 @@ function showFields(i){
 }
 
 window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+	if (!event.target.matches('.dropbtn')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-
-function properDateFormat(date) {
-  year = "" + date.getFullYear();
-
-  month = "" + (date.getMonth() + 1); 
-  if (month.length == 1) { 
-  	month = "0" + month; 
-
-  }
-
-  day = "" + date.getDate(); 
-  if (day.length == 1) { 
-  	day = "0" + day; 
-  }
-  hour = "" + date.getHours(); 
-  if (hour.length == 1) { 
-  	hour = "0" + hour; 
-  }
-
-  minute = "" + date.getMinutes(); 
-  if (minute.length == 1) { 
-  	minute = "0" + minute; 
-  }
-
-  return year + "-" + month + "-" + day + " " + hour + ":" + minute;
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+		}
+	}
 }
