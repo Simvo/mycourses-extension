@@ -65,15 +65,10 @@ function addToCalendar() {
 
 		startDate.setHours(startDate.getHours() - 1);
 
-		let calendarValues = createCalendar({
-			options: {
-				class: 'assignmentButton'
-			},
-			data: {
-				title: titles[i].firstChild.innerHTML,
-				start: startDate,
-				end: endDate
-			}
+		let calendarValues = generateCalendars({
+			title: titles[i].firstChild.innerHTML,
+			start: startDate,
+			end: endDate
 		});
 
 		Object.keys(calendarValues).forEach(function(services){
