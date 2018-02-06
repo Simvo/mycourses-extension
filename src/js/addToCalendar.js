@@ -1,14 +1,9 @@
 //jshint esversion: 6
-devlog(url);
-if (url.hostname === "mycourses2.mcgill.ca") {
-	if (url.pathname.match(/\/d2l\/lms\/dropbox\/user\/folders_list\.d2l/)) {
-		console.log("Executing addToCalendar.js");		
-		addToCalendar();
-	}
-}
 
 function addToCalendar() {
 
+	devlog("Executing addToCalendar.js");	
+	
 	//Gets each row
 	let rows = document.querySelectorAll("#z_b > tbody > tr > th.d_ich");
 	let titles = document.querySelectorAll('#z_b > tbody > tr:nth-child(n) > th > div.dco.d2l-foldername > div');
@@ -105,3 +100,5 @@ function addToCalendar() {
 	}
 
 }
+
+
