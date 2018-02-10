@@ -15,7 +15,8 @@
         "js/calendarShortcut.js",
         "js/ouical.js", 
         "js/addToCalendar.js",
-        "js/init.js"
+        "js/init.js",
+        "js/gradeCalc.js"
       ],
       "css": ["css/button.css"]
     }
