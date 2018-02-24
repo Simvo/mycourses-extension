@@ -16,6 +16,7 @@
         "js/ouical.js", 
         "js/addToCalendar.js",
         "js/calendarDropdown.js",
+        "js/calendarToggle.js",
         "js/init.js"
       ],
       "css": ["css/button.css"]
