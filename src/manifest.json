@@ -3,17 +3,22 @@
 
   "name": "MyCourses Extension",
   "description": "This extension helps users manage their myCourses assignments.",
-  "version": "0.1.0",
-
+  "version": "0.1.1",
   "browser_action": {
-
   },
   "permissions":[
   ],
   "content_scripts": [
     {
-      "matches": ["*://mycourses2.mcgill.ca/d2l/lms/dropbox*"],
-      "js": ["js/init.js", "js/addToCalendar.js"]
+      "matches": ["*://*.mcgill.ca/*"],
+      "js": [
+        "js/calendarShortcut.js",
+        "js/ouical.js", 
+        "js/addToCalendar.js",
+        "js/calendarDropdown.js",
+        "js/init.js"
+      ],
+      "css": ["css/button.css"]
     }
   ]
 }
