@@ -13,6 +13,8 @@ if (url.hostname === "mycourses2.mcgill.ca") {
 		addToCalendar();
 	}
 	if (url.pathname.match(/\/d2l\/home/)) {	
+		dropDownCalendar();
 		calendarShortcut();
+
 	}
 }
